@@ -10,7 +10,7 @@ COPY . .
 
 
 # Install all dependencies
-RUN npm ci
+RUN npm i
 
 
 # Build application
