@@ -1,18 +1,53 @@
-# test
-name: version, tag and github release
+# # test
+# name: version, tag and github release
+
+# on:
+#   push:
+#     branches: [main]
+
+# jobs:
+#   release:
+#     uses: oclif/github-workflows/.github/workflows/githubRelease.yml@main
+#     secrets: inherit
+
+#   # most repos won't use this
+#   # depends on previous job to avoid git collisions, not for any functionality reason
+#   # docs:
+#   #   uses: salesforcecli/github-workflows/.github/workflows/publishTypedoc.yml@main
+#   #   secrets: inherit
+#   #   needs: release
+
+
+name: Publish Docker image to GitHub Container Registry
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  release:
-    uses: oclif/github-workflows/.github/workflows/githubRelease.yml@main
-    secrets: inherit
+  push_to_registry:
+    name: Push Docker image to GitHub Container Registry
+    runs-on: ubuntu-latest
 
-  # most repos won't use this
-  # depends on previous job to avoid git collisions, not for any functionality reason
-  # docs:
-  #   uses: salesforcecli/github-workflows/.github/workflows/publishTypedoc.yml@main
-  #   secrets: inherit
-  #   needs: release
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: ghcr.io/${{ github.repository }}/getsbx-worker-cli:latest
