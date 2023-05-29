@@ -22,7 +22,14 @@
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^2.4.7",
     "dotenv": "^16.0.3",
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^3.3.1",
+    "@dxatscale/sfpowerscripts.core": "33.23.2",
+    "@dxatscale/sfdx-process-wrapper": "0.1.0",
+    "@dxatscale/sfp-logger": "1.2.0",
+    "jsforce": "2.0.0-beta.19",
+    "axios": "^1.4.0",
+    "@salesforce/core": "3.34.1",
+    "@salesforce/packaging": "1.2.2"
   },
   "devDependencies": {
     "@oclif/test": "^2.3.21",
