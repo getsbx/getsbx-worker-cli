@@ -1,3 +1,3 @@
 @echo off
 
-node "%~dp0\run" %*
+5s-node "%~dp0\run" %*

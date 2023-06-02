@@ -27,7 +27,9 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`sbxw SfpCommand`](#sbxw-sfpcommand)
 * [`sbxw help [COMMANDS]`](#sbxw-help-commands)
+* [`sbxw org login`](#sbxw-org-login)
 * [`sbxw plugins`](#sbxw-plugins)
 * [`sbxw plugins:install PLUGIN...`](#sbxw-pluginsinstall-plugin)
 * [`sbxw plugins:inspect PLUGIN...`](#sbxw-pluginsinspect-plugin)
@@ -38,6 +40,15 @@ USAGE
 * [`sbxw plugins:uninstall PLUGIN...`](#sbxw-pluginsuninstall-plugin-2)
 * [`sbxw plugins update`](#sbxw-plugins-update)
 * [`sbxw transformation report`](#sbxw-transformation-report)
+
+## `sbxw SfpCommand`
+
+```
+USAGE
+  $ sbxw SfpCommand
+```
+
+_See code: [dist/commands/SfpCommand.ts](https://github.com/adiza-dev/sbxw/blob/v0.0.0/dist/commands/SfpCommand.ts)_
 
 ## `sbxw help [COMMANDS]`
 
@@ -58,6 +69,20 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.2.9/src/commands/help.ts)_
+
+## `sbxw org login`
+
+Login to a source org or org
+
+```
+USAGE
+  $ sbxw org login
+
+DESCRIPTION
+  Login to a source org or org
+
+  Login to the org with the given id and alias
+```
 
 ## `sbxw plugins`
 

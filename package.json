@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "description": "getsbx-worker-cli",
   "author": "azlam-abdulsalam @azlam-abdulsalam",
-  "type": "module",
   "bin": {
-    "sbxw": "./bin/run.js"
+    "sbxw": "./bin/run"
   },
   "homepage": "https://github.com/adiza-dev/sbxw",
   "license": "MIT",

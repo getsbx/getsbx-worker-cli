@@ -41,11 +41,17 @@ export async function loginwithSfdxAuthUrl(
 	clientSecret: string,
 	refreshToken: string,
 	instanceUrl: string,
+	alias?:string
 ): Promise<Connection> {
 	//force://<clientId>:<clientSecret>:<refreshToken>@<instanceUrl>
 	const sfdxAuthUrl = `force://${clientId}:${clientSecret}:${refreshToken}@${instanceUrl}`;
 	const oauth2Options = AuthInfo.parseSfdxAuthUrl(sfdxAuthUrl);
 	const authInfo = await AuthInfo.create({ oauth2Options });
+	if(alias)
+	{
+	await authInfo.setAlias(alias);
+	await authInfo.save();
+	}
 	return await Connection.create({ authInfo });
 }
 
