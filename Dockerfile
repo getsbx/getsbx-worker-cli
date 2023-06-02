@@ -1,5 +1,5 @@
 # ---- Base Node ----
-FROM ghcr.io/dxatscale/sfpowerscripts AS build
+FROM sitespeedio/node:ubuntu-20.04-nodejs-18.16.0 AS build
 WORKDIR /app
 
 # Copy project file
