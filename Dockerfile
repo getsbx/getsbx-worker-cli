@@ -30,7 +30,7 @@ COPY --from=build /app/oclif.manifest.json .
 
 
 # Install CLI application globally
-RUN npm link
+RUN npm link -g
 
 
 
