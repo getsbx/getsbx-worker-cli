@@ -16,21 +16,22 @@ RUN npm i
 # Build application
 RUN npm run prepack
 
+
+# Build application
+RUN npm pack
+
 # ---- Release ----
 FROM ghcr.io/dxatscale/sfpowerscripts
 WORKDIR /app
 
 # Copy 'dist' folder from build stage
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/bin ./bin
-COPY --from=build /app/package.json .
-COPY --from=build /app/package-lock.json .
-COPY --from=build /app/oclif.manifest.json .
+COPY --from=build /app/sbxw-0.0.0.tgz .
+
+# Install sbxw from local tarball
+RUN npm i -g sbxw-0.0.0.tgz
 
 
-# Install CLI application globally
-RUN npm link -g
+
 
 
 
