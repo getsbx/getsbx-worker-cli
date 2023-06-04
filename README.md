@@ -18,7 +18,7 @@ $ npm install -g sbxw
 $ sbxw COMMAND
 running command...
 $ sbxw (--version)
-sbxw/0.0.0 linux-x64 node-v19.8.1
+sbxw/0.0.0 linux-x64 node-v19.9.0
 $ sbxw --help [COMMAND]
 USAGE
   $ sbxw COMMAND
@@ -76,7 +76,12 @@ Login to a source org or org
 
 ```
 USAGE
-  $ sbxw org login
+  $ sbxw org login -a <value> -i <value> [-s <value>]
+
+FLAGS
+  -a, --alias=<value>        (required) Alias of the authenticated org
+  -i, --id=<value>           (required) Id of the org
+  -s, --sourceorgid=<value>  Id of the source org
 
 DESCRIPTION
   Login to a source org or org
@@ -319,6 +324,8 @@ DESCRIPTION
 
 ## `sbxw transformation report`
 
+Report about transformation
+
 ```
 USAGE
   $ sbxw transformation report -m <value> -s <value> -i <value>
@@ -327,5 +334,10 @@ FLAGS
   -i, --id=<value>       (required) Id of the transformation
   -m, --message=<value>  (required) Message that need to be submitted
   -s, --status=<value>   (required) Status of the transformation
+
+DESCRIPTION
+  Report about transformation
+
+  Send message and status
 ```
 <!-- commandsstop -->
