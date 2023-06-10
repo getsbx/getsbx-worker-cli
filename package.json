@@ -20,7 +20,7 @@
     "@oclif/core": "^2",
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^2.4.7",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.1.4",
     "node-fetch": "^3.3.1",
     "@dxatscale/sfpowerscripts.core": "33.23.2",
     "@dxatscale/sfdx-process-wrapper": "0.1.0",
