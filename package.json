@@ -28,7 +28,8 @@
     "jsforce": "2.0.0-beta.19",
     "axios": "^1.4.0",
     "@salesforce/core": "3.34.1",
-    "@salesforce/packaging": "1.2.2"
+    "@salesforce/packaging": "1.2.2",
+    "@salesforce/source-deploy-retrieve": "9.2.1"
   },
   "devDependencies": {
     "@oclif/test": "^2.3.21",
