@@ -83,7 +83,11 @@ export default abstract class SfpCommand extends Command {
 
     protected async postData(api:string,body:any)
     {
+
         const url= `${process.env.GET_SBX_URL}/${api}`;
+        SFPlogger.log(`POST ${url}: ${JSON.stringify(body)}`);
+      
+        try{
         const response = await fetch(url, {
             method: 'post',
             body: JSON.stringify(body),
@@ -93,7 +97,12 @@ export default abstract class SfpCommand extends Command {
             }
         });
         const data = await response.json();
-        return data;
+         return data;
+      }catch(error)
+      {
+        SFPlogger.log(`Error: ${JSON.stringify(error)}`);
+        throw error;
+      }
     }
 
     protected async patchData(api:string,body:any)

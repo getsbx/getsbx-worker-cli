@@ -2,6 +2,7 @@ import { Args, Command } from "@oclif/core"
 import SfpCommand from "../SfpCommand";
 import * as dotenv from 'dotenv' 
 import { flags } from "@oclif/parser";
+import SFPLogger from "@dxatscale/sfp-logger";
 
 export default class Report extends SfpCommand
 {
@@ -10,6 +11,7 @@ export default class Report extends SfpCommand
         message: flags.string({char: 'm', description: 'Message that need to be submitted', required: true}),
         status: flags.string({char: 's', description: 'Status of the transformation', required: true}),
         id: flags.string({char: 'i', description: 'Id of the transformation', required: true}),
+        transformationjobid:flags.string({char: 't', description: 'Run Id of the transformation', required: true})
       }
     
 
@@ -19,8 +21,8 @@ export default class Report extends SfpCommand
     async exec(): Promise<any> {
 
         const url= `transformations/${this.flags.id}/messages`;
-        const result = await  super.postData(url, { message: this.flags.message, status: this.flags.status});
-        console.log(`Succesfully submitted the status of the transformation with id ${this.flags.id} ${JSON.stringify(result)}`);
+        const result = await  super.postData(url, { message: this.flags.message, status: this.flags.status, transformationJobId: this.flags.transformationjobid});
+        SFPLogger.log(`Succesfully submitted the status of the transformation with id ${this.flags.id} ${JSON.stringify(result)}`);
         
     }
 
