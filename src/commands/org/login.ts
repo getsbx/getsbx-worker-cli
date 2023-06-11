@@ -30,21 +30,14 @@ export default class Login extends SfpCommand {
    
     let url;
     if (!this.flags.sourceorgid)
-      url = `${process.env.GET_SBX_URL}/organizations/${this.flags.id}`;
+      url = `organizations/${this.flags.id}`;
     else
-      url = `${process.env.GET_SBX_URL}/organizations/${this.flags.id}/sourceOrg/${this.flags.sourceorgid}`;
+      url = `organizations/${this.flags.id}/sourceOrg/${this.flags.sourceorgid}`;
     
     
 
     SFPLogger.log(`Fetching org details from ${url}`, LoggerLevel.INFO);
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.GET_SBX_TOKEN}`
-      }
-    });
-    const organisation: any = await response.json();
+    const organisation = await  super.getData(url)
     SFPLogger.log(`organisation: ${JSON.stringify(organisation)}`,LoggerLevel.INFO);
 
 
