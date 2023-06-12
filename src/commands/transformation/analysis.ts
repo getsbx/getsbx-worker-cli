@@ -10,6 +10,7 @@ export default class Analysis extends SfpCommand
    
     static flags = {
         id: flags.string({char: 'i', description: 'Id of the transformation', required: true}),
+        transformationjobid:flags.integer({char: 't', description: 'Run Id of the transformation', required: true})
       }
     
 
@@ -24,16 +25,14 @@ export default class Analysis extends SfpCommand
         const resolver = new MetadataResolver();
         const components = resolver.getComponentsFromPath('force-app');
         for (const component of components) {
-            console.log(component.fullName);
             if(component.type.name === 'NamedCredential') {
-                console.log(component.type.name);
                 namedCredentials.push({fullName: component.fullName});
             }
         }
 
          config.namedCredentials = namedCredentials;
          const url= `transformations/${this.flags.id}`;
-         await super.patchData(url, { id: this.flags.id, transformationConfig: config});
+         await super.patchData(url, { id: this.flags.id, config: config,transformationJobId: this.flags.transformationjobid});
     }
         
     

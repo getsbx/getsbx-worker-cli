@@ -10,6 +10,7 @@ export default class Report extends SfpCommand
         message: flags.string({char: 'm', description: 'Message that need to be submitted', required: true}),
         status: flags.string({char: 's', description: 'Status of the transformation', required: true}),
         id: flags.string({char: 'i', description: 'Id of the transformation', required: true}),
+        transformationjobid:flags.integer({char: 't', description: 'Run Id of the transformation', required: true})
       }
     
 

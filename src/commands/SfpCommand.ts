@@ -98,6 +98,7 @@ export default abstract class SfpCommand extends Command {
 
     protected async patchData(api:string,body:any)
     {
+        console.log(`body`,JSON.stringify(body));
         const url= `${process.env.GET_SBX_URL}/${api}`;
         const response = await fetch(url, {
             method: 'patch',
@@ -107,6 +108,7 @@ export default abstract class SfpCommand extends Command {
                 'Authorization': `Bearer ${process.env.GET_SBX_TOKEN as string}`
             }
         });
+        console.log(`re`,JSON.stringify(response));
         const data = await response.json();
         return data;
     }
