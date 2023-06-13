@@ -20,7 +20,7 @@ export default class Report extends SfpCommand
     async exec(): Promise<any> {
 
         const url= `transformations/${this.flags.id}/messages`;
-        const result = await  super.postData(url, { message: this.flags.message, status: this.flags.status});
+        const result = await  super.postData(url, { message: this.flags.message, status: this.flags.status,transformationJobId:this.flags.transformationjobid});
         console.log(`Succesfully submitted the status of the transformation with id ${this.flags.id} ${JSON.stringify(result)}`);
         
     }
