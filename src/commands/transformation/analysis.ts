@@ -21,6 +21,7 @@ export default class Analysis extends SfpCommand
 
         let config: any={};
         let namedCredentials:any[]=[];
+        let connectedApps:any[]=[];
 
         const resolver = new MetadataResolver();
         const components = resolver.getComponentsFromPath('force-app');
@@ -28,9 +29,15 @@ export default class Analysis extends SfpCommand
             if(component.type.name === 'NamedCredential') {
                 namedCredentials.push({fullName: component.fullName});
             }
+            if(component.type.name === 'ConnectedApp')
+            {
+                connectedApps.push({fullName: component.fullName});
+            }
+
         }
 
          config.namedCredentials = namedCredentials;
+         config.connectedApps = connectedApps;
          const url= `transformations/${this.flags.id}`;
          await super.patchData(url, { id: this.flags.id, config: config,transformationJobId: this.flags.transformationjobid});
     }
