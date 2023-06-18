@@ -49,7 +49,13 @@ export default class Analysis extends SfpCommand
          config.namedCredentials = namedCredentials;
          config.connectedApps = connectedApps;
          const url= `transformations/${this.flags.id}`;
-         await super.patchData(url, { id: this.flags.id, config: config,transformationJobId: this.flags.transformationjobid});
+         await super.patchData(url, { 
+             id: this.flags.id,
+             message: 'Analysis Complete',
+             status:'AwaitingUserInput',
+             config: config,
+             transformationJobId: this.flags.transformationjobid
+            });
     }
         
     

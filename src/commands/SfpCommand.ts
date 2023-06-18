@@ -92,8 +92,9 @@ export default abstract class SfpCommand extends Command {
                 'Authorization': `Bearer ${process.env.GET_SBX_TOKEN as string}`
             }
         });
-        const data = await response.json();
-        return data;
+        const repsonseAsJSON = await response.json();
+        console.log(`result:`,JSON.stringify(repsonseAsJSON));
+        return repsonseAsJSON;
     }
 
     protected async patchData(api:string,body:any)
@@ -101,16 +102,17 @@ export default abstract class SfpCommand extends Command {
         console.log(`body`,JSON.stringify(body));
         const url= `${process.env.GET_SBX_URL}/${api}`;
         const response = await fetch(url, {
-            method: 'patch',
+            method: 'PATCH',
             body: JSON.stringify(body),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${process.env.GET_SBX_TOKEN as string}`
             }
         });
-        console.log(`re`,JSON.stringify(response));
-        const data = await response.json();
-        return data;
+       
+        const repsonseAsJSON = await response.json();
+        console.log(`result:`,JSON.stringify(repsonseAsJSON));
+        return repsonseAsJSON;
     }
 
     protected async getData(api:string)
@@ -123,7 +125,8 @@ export default abstract class SfpCommand extends Command {
               'Authorization': `Bearer ${process.env.GET_SBX_TOKEN}`
             }
           });
-        const data = await response.json();
-        return data;
+        const repsonseAsJSON = await response.json();
+        console.log(`result:`,JSON.stringify(repsonseAsJSON));
+        return repsonseAsJSON;
     }
 }
