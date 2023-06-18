@@ -9,7 +9,7 @@ export default class Analysis extends SfpCommand
 {
    
     static flags = {
-        id: flags.string({char: 'i', description: 'Id of the transformation', required: true}),
+        id: flags.integer({char: 'i', description: 'Id of the transformation', required: true}),
         transformationjobid:flags.integer({char: 't', description: 'Run Id of the transformation', required: true})
       }
     
@@ -27,11 +27,21 @@ export default class Analysis extends SfpCommand
         const components = resolver.getComponentsFromPath('force-app');
         for (const component of components) {
             if(component.type.name === 'NamedCredential') {
-                namedCredentials.push({fullName: component.fullName});
+
+              
+                namedCredentials.push({
+                    fullName: component.fullName,
+                    contentRelativeUrl:component.xml
+                });
+                
+
             }
             if(component.type.name === 'ConnectedApp')
             {
-                connectedApps.push({fullName: component.fullName});
+                connectedApps.push({
+                fullName: component.fullName,
+                contentRelativeUrl:component.xml
+              });
             }
 
         }
